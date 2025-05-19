@@ -1,7 +1,7 @@
 // tests/login.spec.ts
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { TestSetup } from '../helpers/TestSetup';
+import { TestSetup } from '@helpers/TestSetup';
+import { LoginPage } from '@pages/LoginPage';
 
 test.describe('Login Tests', () => {
   let loginPage: LoginPage;
