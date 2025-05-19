@@ -1,4 +1,3 @@
-// helpers/TestSetup.ts
 import { Page } from '@playwright/test';
 
 export class TestSetup {
