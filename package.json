@@ -1,0 +1,23 @@
+{
+  "name": "js.playwright-ui.tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prasetyo531/js.playwright-ui.tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prasetyo531/js.playwright-ui.tutorial/issues"
+  },
+  "homepage": "https://github.com/prasetyo531/js.playwright-ui.tutorial#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.19",
+    "dotenv": "^16.0.3"
+  }
+}
