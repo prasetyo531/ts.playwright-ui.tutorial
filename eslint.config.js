@@ -1,55 +1,41 @@
-import tsParser from '@typescript-eslint/parser';
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import sonarjs from 'eslint-plugin-sonarjs';
-import prettier from 'eslint-plugin-prettier';
-
-export default [
-  // Ignore common directories
+module.exports = [
   {
-    ignores: ['dist/**', 'node_modules/**'],
+    ignores: ['node_modules/**', 'playwright-report/**', 'test-results/**'], // Ignore node_modules and report folders
   },
-
-  // Base config for JS and TS files
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js'],
+    files: ['**/*.ts', '**/*.js', '**/*.cjs'], // Apply the config to TypeScript files
     languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: './tsconfig.json',
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
+      parser: require('@typescript-eslint/parser'),
     },
     plugins: {
-      '@typescript-eslint': tsPlugin,
-      sonarjs,
-      prettier,
+      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
+      'sonarjs': require('eslint-plugin-sonarjs'),
+      'no-only-tests': require('eslint-plugin-no-only-tests'),
+      '@stylistic/ts': require('@stylistic/eslint-plugin-ts')
     },
     rules: {
-      // Recommended rules
-      ...tsPlugin.configs.recommended.rules,
-      ...sonarjs.configs.recommended.rules,
-
-      // Prettier as an ESLint rule
-      'prettier/prettier': 'error',
-
-      // Custom rules
-      '@typescript-eslint/no-unused-vars': ['warn'],
-      quotes: ['error', 'single'],
-      semi: ['error', 'always'],
+      'no-unused-vars': ['error'],
+      'no-console': 'off',
+      'max-lines-per-function': ['error', 80],
+      'max-depth': ['error', 4],
+      'sonarjs/cognitive-complexity': ['error', 15],
+      'sonarjs/no-duplicate-string': 'warn',
+      'eqeqeq': ['error', 'smart'],
+      'quotes': ['error', 'single'],
+      'no-cond-assign': ['error', 'always'],
+      'no-unreachable': 'error',
+      'no-useless-assignment': 'error',
+      'no-var': 'error',
+      'yoda': ['error', 'never'],
+      'no-only-tests/no-only-tests': 'error',
+      '@stylistic/ts/indent': ['error', 2]
     },
   },
-
-  // Playwright-specific rules for test files (optional)
   {
-    files: ['**/tests/**/*.ts', '**/*.spec.ts'],
+    // Override for test files (e.g., *.spec.ts)
+    files: ['suites/**/*.test.ts'],
     rules: {
-      // Add playwright rules here if needed
-      // 'playwright/no-skipped-test': 'warn',
-      // 'playwright/no-focused-test': 'error',
+      'max-lines-per-function': 'off',  // Turn off this rule for test files
     },
   },
 ];
