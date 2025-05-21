@@ -16,6 +16,6 @@
     "rootDir": "./",
     "types": ["@playwright/test", "node"]
   },
-  "include": ["pages/**/*.ts", "helpers/**/*.ts", "tests/**/*.ts"],
+  "include": ["pages/**/*.ts", "helpers/**/*.ts", "tests/**/*.ts", "eslint.config.mjs", "playwright.config.ts", "globalSetup.ts"],
   "exclude": ["node_modules"]
 }
