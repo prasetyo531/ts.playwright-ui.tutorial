@@ -13,7 +13,7 @@ module.exports = {
     playwright: require('eslint-plugin-playwright'),
   },
   rules: {
-    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'playwright/no-conditional-in-test': 'error',

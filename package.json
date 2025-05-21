@@ -6,7 +6,7 @@
     "test": "playwright test",
     "test:debug": "playwright test --debug",
     "prepare": "husky",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings=10",
     "ts-node:run": "ts-node -- sample-script.ts",
     "pretest": "tsc --noEmit && eslint tests/**"
   },
